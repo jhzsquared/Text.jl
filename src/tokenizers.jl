@@ -66,7 +66,7 @@ function twenglish_tokenizer(s :: AbstractString)
     begin 
       m = match(r"^(\p{P}*)(.*?)\p{P}*$", w)
       nw = (m == nothing) ? w : (m.captures[1] == "#" ? (m.captures[1] * m.captures[2]) : m.captures[2])
-      patternReplace(nw) 
+      pattern_replace(nw) 
     end for w in filter(x -> !ismatch(r"^(\p{P}|\p{S})+$", x) && !ismatch(r"^@.*$", x), split(strip(s), r"\s+"))
   ]
 end
